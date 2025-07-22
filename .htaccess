@@ -1,0 +1,2 @@
+ErrorDocument 404 /Jhaycor_PHP/404.php
+DirectoryIndex dashboard.php
