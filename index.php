@@ -19,6 +19,8 @@ header("Expires: 0");
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jhaycor Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <style>
     body {
       padding-top: 56px;
@@ -314,6 +316,12 @@ header("Expires: 0");
       </div>
     </div>
 
+    <div id="logistics" class="section-content">
+      <div class="container my-4">
+        <div id="map" style="height: 400px; width: 100%;"></div>
+      </div>
+    </div>
+
     <div id="sales_marketing" class="section-content">
       <div class="container my-4">
 
@@ -474,6 +482,27 @@ header("Expires: 0");
           console.error(error);
         });
     });
+  </script>
+
+  <!-- Maps -->
+  <?php
+  $latitude = 7.3081;
+  $longitude = 125.6845;
+  ?>
+  <script>
+    const lat = <?php echo $latitude; ?>;
+    const lng = <?php echo $longitude; ?>;
+
+    const map = L.map('map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+      .bindPopup('Panabo City, Davao del Norte')
+      .openPopup();
   </script>
 
 </body>
