@@ -495,10 +495,12 @@ header("Expires: 0");
 
     const map = L.map('map').setView([lat, lng], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=P6Qc8ViMtCXJ1sGCzfmI', {
+      attribution: '&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a>',
+      tileSize: 512,
+      zoomOffset: -1
     }).addTo(map);
+
 
     L.marker([lat, lng]).addTo(map)
       .bindPopup('Panabo City, Davao del Norte')
